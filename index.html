@@ -4,12 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Md Ariful Islam - Senior Linux System Administrator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --primary-color: #2c3e50;
-        --secondary-color: #3498db;
-        --text-color: #333;
-        --light-bg: #f8f9fa;
+        --primary-color: #2563eb;
+        --secondary-color: #1e40af;
+        --accent-color: #3b82f6;
+        --text-color: #1f2937;
+        --light-bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border-color: #e2e8f0;
       }
 
       * {
@@ -19,7 +26,7 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Poppins", sans-serif;
         line-height: 1.6;
         color: var(--text-color);
         background-color: var(--light-bg);
@@ -32,62 +39,167 @@
       }
 
       header {
-        background-color: var(--primary-color);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
         color: white;
         padding: 4rem 0;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>')
+          center/cover;
+        opacity: 0.1;
       }
 
       h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         margin-bottom: 1rem;
+        font-weight: 700;
+        position: relative;
       }
 
       .subtitle {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         opacity: 0.9;
+        font-weight: 300;
       }
 
       section {
-        background: white;
+        background: var(--card-bg);
         margin: 2rem 0;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
+        transition: transform 0.3s ease;
+      }
+
+      section:hover {
+        transform: translateY(-5px);
       }
 
       h2 {
         color: var(--primary-color);
         margin-bottom: 1.5rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid var(--accent-color);
+        font-size: 1.8rem;
+        font-weight: 600;
       }
 
       .job {
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .job:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
       }
 
       .job-title {
-        font-weight: bold;
-        color: var(--secondary-color);
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 1.2rem;
       }
 
       .company {
         font-style: italic;
+        color: var(--text-color);
+        opacity: 0.8;
       }
 
       .date {
-        color: #666;
+        color: var(--accent-color);
         font-size: 0.9rem;
+        font-weight: 500;
       }
 
       ul {
-        list-style-position: inside;
-        margin: 1rem 0;
+        list-style-position: outside;
+        margin: 1rem 0 1rem 1.5rem;
       }
 
       li {
+        margin-bottom: 0.75rem;
+        position: relative;
+      }
+
+      li::before {
+        content: "•";
+        color: var(--accent-color);
+        font-weight: bold;
+        position: absolute;
+        left: -1.5rem;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 1rem;
+      }
+
+      .contact-card {
+        background: var(--light-bg);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      }
+
+      .contact-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .contact-card p {
         margin-bottom: 0.5rem;
+      }
+
+      a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .skill-category {
+        background: var(--light-bg);
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      }
+
+      .skill-category h3 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
       }
 
       @media (max-width: 768px) {
@@ -96,11 +208,19 @@
         }
 
         header {
-          padding: 2rem 0;
+          padding: 3rem 0;
         }
 
         h1 {
-          font-size: 2rem;
+          font-size: 2.2rem;
+        }
+
+        .subtitle {
+          font-size: 1.1rem;
+        }
+
+        section {
+          padding: 1.5rem;
         }
       }
     </style>
@@ -254,29 +374,41 @@
 
       <section>
         <h2>Technical Skills</h2>
-        <ul>
-          <li>Linux System Administration (CentOS, Ubuntu, Debian)</li>
-          <li>AWS Cloud Infrastructure</li>
-          <li>CI/CD Pipeline Implementation</li>
-          <li>Docker & Containerization</li>
-          <li>Ansible Automation</li>
-          <li>WordPress Optimization & Security</li>
-          <li>LEMP/LAMP Stack Management</li>
-          <li>Server Monitoring & Performance Tuning</li>
-          <li>Security Hardening & Malware Prevention</li>
-        </ul>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>System Administration</h3>
+            <ul>
+              <li>Linux (CentOS, Ubuntu, Debian)</li>
+              <li>WHM/cPanel Management</li>
+              <li>Server Monitoring</li>
+              <li>Performance Tuning</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Cloud & DevOps</h3>
+            <ul>
+              <li>AWS Cloud Infrastructure</li>
+              <li>Docker & Containerization</li>
+              <li>CI/CD Pipeline Implementation</li>
+              <li>Ansible Automation</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Web Technologies</h3>
+            <ul>
+              <li>WordPress Optimization</li>
+              <li>LEMP/LAMP Stack</li>
+              <li>LiteSpeed Cache</li>
+              <li>Security Hardening</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section>
         <h2>Contact Information</h2>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-          "
-        >
-          <div>
+        <div class="contact-grid">
+          <div class="contact-card">
             <h3>Get in Touch</h3>
             <p>
               <strong>Email:</strong>
@@ -295,7 +427,7 @@
               >
             </p>
           </div>
-          <div>
+          <div class="contact-card">
             <h3>Address</h3>
             <p>Jahapur</p>
             <p>Post Office: Gholdari Bazar</p>
